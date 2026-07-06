@@ -31,6 +31,8 @@ describe("mbti scoring", () => {
     expect(test.questions).toHaveLength(15);
     expect(test.candidates).toEqual(["ENTP", "ENFP", "INTJ", "ENFJ"]);
     expect(test.questions[0].options).toHaveLength(4);
+    expect(test.questions[0].options.map((option) => option.value)).toEqual(["ENTP", "ENFP", "INTJ", "ENFJ"]);
+    expect(test.questions[1].options.map((option) => option.value)).toEqual(["INTJ", "ENFJ", "ENTP", "ENFP"]);
   });
 
   it("loads imported 28 and 93 question files", () => {

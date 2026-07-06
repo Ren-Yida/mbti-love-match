@@ -658,12 +658,22 @@ export function getCompatibilityTest(selfType: MbtiType): CompatibilityTest {
     questions: compatibilityQuestionTemplates.map((template, index) => ({
       id: `cq${index + 1}`,
       text: template.text,
-      options: candidates.map((candidate, candidateIndex) => ({
-        value: candidate,
-        label: `${candidate}：${template.labels[candidateIndex]}`
-      }))
+      options: rotateCompatibilityOptions(
+        candidates.map((candidate, candidateIndex) => ({
+          value: candidate,
+          label: `${candidate}：${template.labels[candidateIndex]}`
+        })),
+        index
+      )
     }))
   };
+}
+
+function rotateCompatibilityOptions(options: CompatibilityOption[], questionIndex: number): CompatibilityOption[] {
+  const offsetPattern = [0, 2, 1, 3];
+  const offset = offsetPattern[questionIndex % offsetPattern.length];
+
+  return [...options.slice(offset), ...options.slice(0, offset)];
 }
 
 export function scoreCompatibilityTest(
