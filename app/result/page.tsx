@@ -283,15 +283,15 @@ export default async function ResultPage({ searchParams }: ResultPageProps) {
       </div>
 
       <div className="mt-5 space-y-3">
+        <p className="rounded-[18px] border border-[#b7c7df]/70 bg-white/45 p-4 text-xs leading-6 text-[#5d6f86]">
+          下面的分析不是在否定其他类型，而是帮你区分：从这次答题状态看，哪些关系模式可能没有那么贴近你此刻的情感需求。
+        </p>
         {insight.alternatives.map((item) => (
           <div key={item.type} className="rounded-[20px] border border-[#b7c7df]/70 bg-white/52 p-4">
             <p className="text-sm font-bold text-[#5d6f86]">为什么目前不是 {item.type}</p>
             <p className="mt-2 text-lg font-black">{item.title}</p>
             <p className="mt-2 text-sm leading-7 text-[#4a5d75]">{item.gap}</p>
             <p className="mt-2 text-sm leading-7 text-[#4a5d75]">{item.gapDetail}</p>
-            <p className="mt-2 text-xs leading-6 text-[#5d6f86]">
-              这不代表 {item.type} 一定不适合你，只是从这次答题呈现的状态看，它可能不是你现阶段最省力、最贴合的关系模式。
-            </p>
           </div>
         ))}
       </div>
